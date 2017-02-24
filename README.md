@@ -22,9 +22,13 @@ Then setup dokuwiki using installer at URL `http://localhost:8000/install.php`
 ### How to make data persistent
 
 docker run -d -p 8000:80 --name dokuwiki  istepanov/dokuwiki:2.0
+
 docker inspect dokuwiki
+
 sudo cp -pr "/var/lib/docker/volumes/151c4dadec207608a13145b5e17f936e6cc4f516966fbc57d29ac39be24a425e/_data" /home/docker/wiki/dokuwiki-storage
+
 docker run -it -p 8000:80 --name dokuwiki -v /home/docker/wiki/dokuwiki-storage:/var/dokuwiki-storage istepanov/dokuwiki:2.0
+
 
 ### Persistent plugins
 
