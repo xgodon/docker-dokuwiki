@@ -1,7 +1,9 @@
 FROM alpine:3.5
-MAINTAINER Ilya Stepanov <dev@ilyastepanov.com>
+MAINTAINER Xavier Godon <xav.godon@gmail.com>
 
-ENV DOKUWIKI_VERSION 2016-06-26a
+#ENV DOKUWIKI_VERSION 2016-06-26a
+ENV DOKUWIKI_VERSION 2017-02-19a
+
 ENV MD5_CHECKSUM 9b9ad79421a1bdad9c133e859140f3f2
 
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ add \
