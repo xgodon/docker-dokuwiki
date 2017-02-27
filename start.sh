@@ -5,13 +5,21 @@ if [ -f "$file" ]
 then
 	echo "$file found."
 else
-	ln /var/www/data/pages /var/dokuwiki-storage/data/pages
-	ln /var/www/data/meta /var/dokuwiki-storage/data/meta
-	ln /var/www/data/media /var/dokuwiki-storage/data/media
-	ln /var/www/data/media_attic /var/dokuwiki-storage/data/media_attic
-	ln /var/www/data/media_meta /var/dokuwiki-storage/data/media_meta
-	ln /var/www/data/attic /var/dokuwiki-storage/data/attic
-	ln /var/www/conf /var/dokuwiki-storage/conf
+	mv /var/www/data/pages /var/dokuwiki-storage/data/pages && \
+	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
+ 	mv /var/www/data/meta /var/dokuwiki-storage/data/meta && \
+ 	ln -s /var/dokuwiki-storage/data/meta /var/www/data/meta && \
+ 	mv /var/www/data/media /var/dokuwiki-storage/data/media && \
+ 	ln -s /var/dokuwiki-storage/data/media /var/www/data/media && \
+ 	mv /var/www/data/media_attic /var/dokuwiki-storage/data/media_attic && \
+ 	ln -s /var/dokuwiki-storage/data/media_attic /var/www/data/media_attic && \
+ 	mv /var/www/data/media_meta /var/dokuwiki-storage/data/media_meta && \
+ 	ln -s /var/dokuwiki-storage/data/media_meta /var/www/data/media_meta && \
+ 	mv /var/www/data/attic /var/dokuwiki-storage/data/attic && \
+ 	ln -s /var/dokuwiki-storage/data/attic /var/www/data/attic && \
+ 	mv /var/www/conf /var/dokuwiki-storage/conf && \
+ 	ln -s /var/dokuwiki-storage/conf /var/www/conf
+	
 	
 	echo "1" > /init_done
 fi
