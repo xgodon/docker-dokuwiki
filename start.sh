@@ -1,10 +1,36 @@
 #!/bin/sh
 
 file="/init_done"
+dir=/var/dokuwiki-storage
+
 if [ -f "$file" ]
 then
 	echo "$file found."
+
+elif [ "$(ls -A $dir)" ]
+then
+	echo "mounted dir not empty"	
+	
+	rm /var/www/data/pages
+	rm /var/www/data/meta
+	rm /var/www/data/media
+	rm /var/www/data/media_attic
+	rm /var/www/data/media_meta
+	rm /var/www/data/attic
+	rm /var/www/conf
+
+
+	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
+	ln -s /var/dokuwiki-storage/data/meta /var/www/data/meta && \
+	ln -s /var/dokuwiki-storage/data/media /var/www/data/media && \
+	ln -s /var/dokuwiki-storage/data/media_attic /var/www/data/media_attic && \
+	ln -s /var/dokuwiki-storage/data/media_meta /var/www/data/media_meta && \
+	ln -s /var/dokuwiki-storage/data/attic /var/www/data/attic && \
+	ln -s /var/dokuwiki-storage/conf /var/www/conf
+
 else
+	mkdir -p /var/www /var/dokuwiki-storage/data
+
 	mv /var/www/data/pages /var/dokuwiki-storage/data/pages && \
 	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
  	mv /var/www/data/meta /var/dokuwiki-storage/data/meta && \
