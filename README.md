@@ -10,7 +10,7 @@ Dokuwiki v. 2017-02-19a "Frusterick Manners"
 
 alpine_edge_1.1
 
-debian_8.7_1.1
+debian_8.7_1.1 (not working atm)
 
 ### How to run
 
