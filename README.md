@@ -7,7 +7,8 @@ Dokuwiki v. 2017-02-19a "Frusterick Manners"
 
 ### available tags
 
-alpine_edge_1.1 
+alpine_edge_1.1
+
 debian_8.7_1.1
 
 ### How to run
