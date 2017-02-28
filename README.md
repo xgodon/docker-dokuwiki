@@ -5,9 +5,10 @@ nerka/docker-dokuwiki
 Docker container image with [DokuWiki](https://www.dokuwiki.org/dokuwiki) and nginx
 Dokuwiki v. 2017-02-19a "Frusterick Manners"
 
-### todo
+### available tags
 
-be able to mount via -v 
+alpine_edge_1.1 
+debian_8.7_1.1
 
 ### How to run
 
