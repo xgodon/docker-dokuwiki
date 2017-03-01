@@ -11,13 +11,13 @@ elif [ "$(ls -A $dir)" ]
 then
 	echo "mounted dir not empty"	
 	
-	rm /var/www/data/pages
-	rm /var/www/data/meta
-	rm /var/www/data/media
-	rm /var/www/data/media_attic
-	rm /var/www/data/media_meta
-	rm /var/www/data/attic
-	rm /var/www/conf
+	rm -r /var/www/data/pages
+	rm -r /var/www/data/meta
+	rm -r /var/www/data/media
+	rm -r /var/www/data/media_attic
+	rm -r /var/www/data/media_meta
+	rm -r /var/www/data/attic
+	rm -r /var/www/conf
 
 
 	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
