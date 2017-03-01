@@ -30,7 +30,6 @@ then
 
 else
 	mkdir -p /var/www /var/dokuwiki-storage/data
-	mkdir -p /var/www /var/dokuwiki-storage/conf
 
 	mv /var/www/data/pages /var/dokuwiki-storage/data/pages && \
 	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
