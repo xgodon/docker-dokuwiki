@@ -8,8 +8,8 @@ Dokuwiki v. 2017-02-19a "Frusterick Manners"
 
 ### available tags
 
-alpine_edge_1.1
-
+alpine_edge_simple_1.2 ( == latest )
+alpine_edge_plugins_1.2
 debian_8.7_1.1 (not working atm)
 
 ### How to run
@@ -18,13 +18,17 @@ Assume your docker host is localhost and HTTP public port is 8000 (change these 
 
 First, run new dokuwiki container:
 
-    docker run -d -p 8000:80 --name dokuwiki nerka/docker-dokuwiki:alpine_edge_1.1
+    docker run -d -p 8000:80 --name dokuwiki nerka/docker-dokuwiki:alpine_edge_1.2
 
 Then setup dokuwiki using installer at URL `http://localhost:8000/install.php`
 
 ### How to make data persistent
 
-    docker run -d -p 8000:80 --name dokuwiki -v /home/docker/wiki/dokuwiki-storage:/var/dokuwiki-storage nerka/docker-dokuwiki:alpine_edge_1.1
+    docker run -d \
+    -p 8000:80 \
+    --name dokuwiki \
+    -v /home/docker/wiki/dokuwiki-storage:/var/dokuwiki-storage \
+    nerka/docker-dokuwiki:alpine_edge_1.2
 
 
 ### Persistent plugins
