@@ -15,7 +15,7 @@ RUN mkdir -p /run/nginx && \
     tar -xzf "dokuwiki-$DOKUWIKI_VERSION.tgz" --strip 1 && \
     rm "dokuwiki-$DOKUWIKI_VERSION.tgz" 
 
-RUN mkdir -p /var/www /var/dokuwiki-storage/data 
+RUN mkdir -p /var/www /var/dokuwiki-storage 
 
 
 ADD nginx.conf /etc/nginx/nginx.conf
