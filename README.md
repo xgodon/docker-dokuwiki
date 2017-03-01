@@ -9,8 +9,12 @@ Dokuwiki v. 2017-02-19a "Frusterick Manners"
 ### available tags
 
 alpine_edge_simple_1.2 ( == latest )
+
 alpine_edge_plugins_1.2
+
 debian_8.7_1.1 (not working atm)
+
+plugin version is simple version with  dw2pdf, bookcreator, smtp, text, odt, and indexmenu plugins.
 
 ### How to run
 
