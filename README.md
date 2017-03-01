@@ -22,7 +22,7 @@ Assume your docker host is localhost and HTTP public port is 8000 (change these 
 
 First, run new dokuwiki container:
 
-    docker run -d -p 8000:80 --name dokuwiki nerka/docker-dokuwiki:alpine_edge_1.2
+    docker run -d -p 8000:80 --name dokuwiki nerka/docker-dokuwiki:latest
 
 Then setup dokuwiki using installer at URL `http://localhost:8000/install.php`
 
@@ -32,7 +32,7 @@ Then setup dokuwiki using installer at URL `http://localhost:8000/install.php`
     -p 8000:80 \
     --name dokuwiki \
     -v /home/docker/wiki/dokuwiki-storage:/var/dokuwiki-storage \
-    nerka/docker-dokuwiki:alpine_edge_1.2
+    nerka/docker-dokuwiki:latest
 
 
 ### Persistent plugins
