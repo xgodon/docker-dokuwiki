@@ -46,9 +46,8 @@ else
  	mv /var/www/conf /var/dokuwiki-storage/conf && \
  	ln -s /var/dokuwiki-storage/conf /var/www/conf
 	
-	
-	echo "1" > /init_done
 fi
+echo "1" > /init_done
 
 set -e
 
