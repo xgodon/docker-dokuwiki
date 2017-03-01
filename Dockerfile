@@ -9,49 +9,14 @@ RUN apk upgrade -q -U -a && \
     apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ add -U \
     php7 php7-fpm php7-gd php7-session php7-xml php7-openssl php7-zlib php7-mbstring php7-ctype php7-ldap nginx supervisor curl tar unzip
 
+
 RUN mkdir -p /run/nginx && \
     cd /var/www && \
     curl -O -L "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-$DOKUWIKI_VERSION.tgz" && \
     tar -xzf "dokuwiki-$DOKUWIKI_VERSION.tgz" --strip 1 && \
     rm "dokuwiki-$DOKUWIKI_VERSION.tgz" 
 
-RUN mkdir -p /var/www /var/dokuwiki-storage/ 
-
-RUN cd /var/www/lib/plugins/ && \
-    curl -O -L "https://github.com/samuelet/indexmenu/archive/master.zip" && \
-    unzip master.zip -d /var/www/lib/plugins/ && \
-    mv /var/www/lib/plugins/indexmenu-master /var/www/lib/plugins/indexmenu && \
-    rm -rf master.zip 
-
-RUN cd /var/www/lib/plugins/ && \
-    curl -O -L "https://github.com/LarsGit223/dokuwiki-plugin-odt/archive/master.zip" && \
-    unzip master.zip -d /var/www/lib/plugins/ && \
-    mv /var/www/lib/plugins/dokuwiki-plugin-odt-master /var/www/lib/plugins/odt && \
-    rm -rf master.zip
-
-RUN cd /var/www/lib/plugins/ && \
-    curl -O -L "https://github.com/michitux/dokuwiki-plugin-text/archive/master.zip" && \
-    unzip master.zip -d /var/www/lib/plugins/ && \
-    mv /var/www/lib/plugins/dokuwiki-plugin-text-master /var/www/lib/plugins/text && \
-    rm -rf master.zip
-
-RUN cd /var/www/lib/plugins/ && \
-    curl -O -L "https://github.com/splitbrain/dokuwiki-plugin-smtp/archive/master.zip" && \
-    unzip master.zip -d /var/www/lib/plugins/ && \
-    mv /var/www/lib/plugins/dokuwiki-plugin-smtp-master /var/www/lib/plugins/smtp && \
-    rm -rf master.zip
-
-RUN cd /var/www/lib/plugins/ && \
-    curl -O -L "https://github.com/splitbrain/dokuwiki-plugin-dw2pdf/archive/master.zip" && \
-    unzip master.zip -d /var/www/lib/plugins/ && \
-    mv /var/www/lib/plugins/dokuwiki-plugin-dw2pdf-master /var/www/lib/plugins/dw2pdf && \
-    rm -rf master.zip
-
-RUN cd /var/www/lib/plugins/ && \
-    curl -O -L "https://github.com/Klap-in/dokuwiki-plugin-bookcreator/archive/master.zip" && \
-    unzip master.zip -d /var/www/lib/plugins/ && \
-    mv /var/www/lib/plugins/dokuwiki-plugin-bookcreator-master /var/www/lib/plugins/bookcreator && \
-    rm -rf master.zip
+RUN mkdir -p /var/www /var/dokuwiki-storage 
 
 
 ADD nginx.conf /etc/nginx/nginx.conf
