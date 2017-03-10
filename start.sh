@@ -20,6 +20,7 @@ then
 
 else
 	mkdir -p /var/www /var/dokuwiki-storage/data
+        mkdir -p /var/www /var/dokuwiki-storage/lib
 
         for saved_dir in $saved_dirs
         do
