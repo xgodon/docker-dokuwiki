@@ -2,6 +2,7 @@
 
 file="/init_done"
 dir=/var/dokuwiki-storage
+saved_dirs="data/pages data/meta  data/media  data/media_attic data/media_meta data/attic conf lib/plugins lib/styles lib/tpl"
 
 if [ -f "$file" ]
 then
@@ -10,50 +11,30 @@ then
 elif [ "$(ls -A $dir)" ]
 then
 	echo "mounted dir not empty"	
-	
-	rm -r /var/www/data/pages
-	rm -r /var/www/data/meta
-	rm -r /var/www/data/media
-	rm -r /var/www/data/media_attic
-	rm -r /var/www/data/media_meta
-	rm -r /var/www/data/attic
-	rm -r /var/www/conf
 
-
-	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
-	ln -s /var/dokuwiki-storage/data/meta /var/www/data/meta && \
-	ln -s /var/dokuwiki-storage/data/media /var/www/data/media && \
-	ln -s /var/dokuwiki-storage/data/media_attic /var/www/data/media_attic && \
-	ln -s /var/dokuwiki-storage/data/media_meta /var/www/data/media_meta && \
-	ln -s /var/dokuwiki-storage/data/attic /var/www/data/attic && \
-	ln -s /var/dokuwiki-storage/conf /var/www/conf
+        for saved_dir in $saved_dirs
+        do
+          rm -r /var/www/$saved_dir
+          ln -s /var/dokuwiki-storage/$saved_dir /var/www/$saved_dir
+        done
 
 else
 	mkdir -p /var/www /var/dokuwiki-storage/data
 
-	mv /var/www/data/pages /var/dokuwiki-storage/data/pages && \
-	ln -s /var/dokuwiki-storage/data/pages /var/www/data/pages && \
- 	mv /var/www/data/meta /var/dokuwiki-storage/data/meta && \
- 	ln -s /var/dokuwiki-storage/data/meta /var/www/data/meta && \
- 	mv /var/www/data/media /var/dokuwiki-storage/data/media && \
- 	ln -s /var/dokuwiki-storage/data/media /var/www/data/media && \
- 	mv /var/www/data/media_attic /var/dokuwiki-storage/data/media_attic && \
- 	ln -s /var/dokuwiki-storage/data/media_attic /var/www/data/media_attic && \
- 	mv /var/www/data/media_meta /var/dokuwiki-storage/data/media_meta && \
- 	ln -s /var/dokuwiki-storage/data/media_meta /var/www/data/media_meta && \
- 	mv /var/www/data/attic /var/dokuwiki-storage/data/attic && \
- 	ln -s /var/dokuwiki-storage/data/attic /var/www/data/attic && \
- 	mv /var/www/conf /var/dokuwiki-storage/conf && \
- 	ln -s /var/dokuwiki-storage/conf /var/www/conf
-	
+        for saved_dir in $saved_dirs
+        do
+           mv /var/www/$saved_dir /var/dokuwiki-storage/$saved_dir
+           ln -s /var/dokuwiki-storage/$saved_dir /var/www/$saved_dir
+        done
+
 fi
 echo "1" > /init_done
 
 set -e
 
-chown -R nobody /var/lib/nginx
-chown -R nobody /var/www
-chown -R nobody /var/dokuwiki-storage
+chown -R nobody:nogroup /var/lib/nginx
+chown -R nobody:nogroup /var/www
+chown -R nobody:nogroup /var/dokuwiki-storage
 
 
 su -s /bin/sh nobody -c 'php7 /var/www/bin/indexer.php -c'
