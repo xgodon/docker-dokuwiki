@@ -33,6 +33,19 @@ Then setup dokuwiki using installer at URL `http://localhost:8000/install.php`
     --name dokuwiki \
     -v /home/docker/wiki/dokuwiki-storage:/var/dokuwiki-storage \
     nerka/docker-dokuwiki:latest
+    
+    Note: only these folders are backed up:
+
+    data/pages/
+    data/meta/
+    data/media/
+    data/media_attic/
+    data/media_meta/
+    data/attic/
+    conf/
+
+On the container launch, the start.sh script check if there are files in /var/dokuwiki-storage.
+if there is , they are used.
 
 
 ### Persistent plugins
